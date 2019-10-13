@@ -82,4 +82,8 @@ deck.dealPlayer1()
 
 deck.dealPlayer2()
 
+console.log("Player 1's Deck")
 deck.showPlayer1()
+
+console.log("Player 2's Deck")
+deck.showPlayer2()
