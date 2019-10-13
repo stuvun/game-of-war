@@ -7,7 +7,7 @@ class Deck {
 
     newDeck () {
         let card = (suit, face, value) => {
-            this.name = face + " of " + suit
+            this.name = face + " of " + suit + ", Score: " + value
             this.face = face
             this.value = value
 
@@ -18,11 +18,11 @@ class Deck {
 
         let suits = ["Spades", "Hearts", "Clubs", "Diamonds"];
         let faces = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
-        let values = faces.indexOf() + 1;
         
         for (let s = 0; s < suits.length; s++) {
             for (let f = 0; f < faces.length; f++) {
-                    this.deck.push(card(suits[s], faces[f]))
+                let values = f + 2;
+                this.deck.push(card(suits[s], faces[f], values));
                 }
             }
         }
