@@ -3,6 +3,7 @@ class Deck {
         this.deck = []
         this.player1 = []
         this.player2 = []
+        this.combat = []
     }
 
     newDeck () {
@@ -50,6 +51,16 @@ class Deck {
         while (this.deck.length > 0) {
             let deal2 = this.deck.shift();
             this.player2.push(deal2);
+        }
+    }
+
+    fight () {
+        while (this.player1.length > 0 || this.player2.length > 0) {
+            let fight1 = this.player1.pop();
+            this.combat.push(fight1);
+
+            let fight2 = this.player2.pop();
+            this.combat.push(fight2);
         }
     }
 
