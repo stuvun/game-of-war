@@ -28,4 +28,15 @@ class Deck {
             }
         }
     }
+    showDeck() {
+        for (let c = 0; c < this.deck.length; c++) {
+            console.log(this.deck[c])
+        }
+    }
 }
+
+deck = new Deck
+
+deck.newDeck()
+
+deck.showDeck()
