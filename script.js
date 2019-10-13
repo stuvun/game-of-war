@@ -28,15 +28,26 @@ class Deck {
             }
         }
     }
+    
     showDeck() {
         for (let c = 0; c < this.deck.length; c++) {
             console.log(this.deck[c])
         }
     }
+
+    shuffleDeck () {
+        var i = 0;
+        var i2 = 0;
+        var i3;
+
+        for (i = this.deck.length - 1; i > 0; i -= 1) {
+            i2 = Math.floor(Math.random() * (i + 1));
+            i3 = this.deck[i];
+            this.deck[i] = this.deck[i2];
+            this.deck[i2] = i3;
+        }
+
+    }
 }
 
 deck = new Deck
-
-deck.newDeck()
-
-deck.showDeck()
