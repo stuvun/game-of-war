@@ -18,16 +18,14 @@ class Deck {
 
         let suits = ["Spades", "Hearts", "Clubs", "Diamonds"];
         let faces = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
-        let values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+        let values = faces.indexOf() + 1;
         
         for (let s = 0; s < suits.length; s++) {
             for (let f = 0; f < faces.length; f++) {
-                for (let v = 0; v < values.length; v++) {
-                    this.deck.push(card(suits[s], faces[f], values[v]))
+                    this.deck.push(card(suits[s], faces[f]))
                 }
             }
         }
-    }
     
     showDeck() {
         for (let c = 0; c < this.deck.length; c++) {
@@ -36,18 +34,22 @@ class Deck {
     }
 
     shuffleDeck () {
-        var i = 0;
-        var i2 = 0;
-        var i3;
-
-        for (i = this.deck.length - 1; i > 0; i -= 1) {
-            i2 = Math.floor(Math.random() * (i + 1));
-            i3 = this.deck[i];
-            this.deck[i] = this.deck[i2];
-            this.deck[i2] = i3;
+        let index = this.deck.length, temp, newIndex;
+        
+        while (index != 0) {
+            newIndex = Math.floor(Math.random() * index);
+            index -= 1;
+            temp = this.deck[index];
+            this.deck[index] = this.deck[newIndex];
+            this.deck[newIndex] = temp;
         }
-
     }
 }
 
 deck = new Deck
+
+deck.newDeck()
+
+deck.shuffleDeck()
+
+deck.showDeck()
