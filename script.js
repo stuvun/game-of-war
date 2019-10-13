@@ -26,22 +26,48 @@ class Deck {
                 }
             }
         }
-    
-    showDeck() {
-        for (let c = 0; c < this.deck.length; c++) {
-            console.log(this.deck[c])
-        }
-    }
 
     shuffleDeck () {
         let index = this.deck.length, temp, newIndex;
         
-        while (index != 0) {
+        while (index > 0) {
             newIndex = Math.floor(Math.random() * index);
             index -= 1;
             temp = this.deck[index];
             this.deck[index] = this.deck[newIndex];
             this.deck[newIndex] = temp;
+        }
+    }
+
+    dealPlayer1 () {
+        while (this.deck.length > 26) {
+            let deal1 = this.deck.shift();
+            this.player1.push(deal1);
+        }
+    }
+
+    dealPlayer2 () {
+        while (this.deck.length > 0) {
+            let deal2 = this.deck.shift();
+            this.player2.push(deal2);
+        }
+    }
+
+    showFullDeck () {
+        for (let c = 0; c < this.deck.length; c++) {
+            console.log(this.deck[c])
+        }
+    }
+
+    showPlayer1 () {
+        for (let c1 = 0; c1 < this.player1.length; c1++) {
+            console.log(this.player1[c1])
+        }
+    }
+
+    showPlayer2 () {
+        for (let c2 = 0; c2 < this.player2.length; c2++) {
+            console.log(this.player2[c2])
         }
     }
 }
@@ -52,4 +78,8 @@ deck.newDeck()
 
 deck.shuffleDeck()
 
-deck.showDeck()
+deck.dealPlayer1()
+
+deck.dealPlayer2()
+
+deck.showPlayer1()
