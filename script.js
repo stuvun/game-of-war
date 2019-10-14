@@ -181,65 +181,82 @@ class Deck {
                 console.log("Player 2 wins the battle!")
                 this.win2();
             } else {
+                console.log("Initiate war!!");
                 this.startWar();
-                console.log("combat[6].value", this.combat[6].value)
-                console.log("combat[7].value", this.combat[7].value)
+                /*console.log("combat[6].value", this.combat[6].value)
+                console.log("combat[7].value", this.combat[7].value)*/
                 if (this.combat[6].value > this.combat[7].value) {
+                    console.log("Player 1 wins the war!");
                     this.winWar1();
                 } else if (this.combat[6].value < this.combat[7].value) {
+                    console.log("Player 2 wins the war!");
                     this.winWar2();
                 } else {
+                    console.log("Initiate war!! AGAIN!");
                     this.startWar();
 
                     if (this.combat[14].value > this.combat[15].value) {
+                        console.log("Player 1 wins the war!");
                         this.winWar1();
                         this.winWar1();
                     } else if (this.combat[14].value < this.combat[15].value) {
+                        console.log("Player 2 wins the war!");
                         this.winWar2();
                         this.winWar2();
                     } else {
+                        console.log("Initiate war!! AGAIN!");
                         this.startWar();
 
                         if (this.combat[22].value > this.combat[23].value) {
+                            console.log("Player 1 wins the war!");
                             this.winWar1();
                             this.winWar1();
                             this.winWar1();
                         } else if (this.combat[22].value > this.combat[23].value) {
+                            console.log("Player 2 wins the war!");
                             this.winWar2();
                             this.winWar2();
                             this.winWar2();
                         } else {
+                            console.log("Initiate war!! AGAIN!");
                             this.startWar();
     
                             if (this.combat[30].value > this.combat[31].value) {
+                                console.log("Player 1 wins the war!");
                                 this.winWar1();
                                 this.winWar1();
                                 this.winWar1();
                                 this.winWar1();
                             } else if (this.combat[30].value > this.combat[31].value) {
+                                console.log("Player 2 wins the war!");
                                 this.winWar2();
                                 this.winWar2();
                                 this.winWar2();
                                 this.winWar2();
                             } else {
+                                console.log("Initiate war!! AGAIN!");
                                 this.startWar();
         
                                 if (this.combat[38].value > this.combat[39].value) {
+                                    console.log("Player 1 wins the war!");
                                     this.winWar1();
                                     this.winWar1();
                                     this.winWar1();
                                     this.winWar1();
                                     this.winWar1();
                                 } else if (this.combat[38].value > this.combat[39].value) {
+                                    console.log("Player 2 wins the war!");
                                     this.winWar2();
                                     this.winWar2();
                                     this.winWar2();
                                     this.winWar2();
                                     this.winWar2();
                                 } else {
+                                    console.log("Initiate war!! AGAIN!");
                                     this.startWar();
             
                                     if (this.combat[46].value > this.combat[47].value) {
+                                        console.log("Player 1 wins the war!");
                                         this.winWar1();
                                         this.winWar1();
                                         this.winWar1();
@@ -247,6 +264,7 @@ class Deck {
                                         this.winWar1();
                                         this.winWar1();
                                     } else if (this.combat[46].value > this.combat[47].value) {
+                                        console.log("Player 2 wins the war!");
                                         this.winWar2();
                                         this.winWar2();
                                         this.winWar2();
@@ -270,14 +288,10 @@ deck = new Deck
 
 deck.newDeck()
 
-deck.shuffleDeck()
+shuffle = deck.shuffleDeck()
 
-deck.dealPlayer1()
+player1 = deck.showPlayer1()
 
-deck.dealPlayer2()
+player2 = deck.showPlayer2()
 
-console.log("Player 1's Deck")
-deck.showPlayer1()
-
-console.log("Player 2's Deck")
-deck.showPlayer2()
+war = deck.war()
