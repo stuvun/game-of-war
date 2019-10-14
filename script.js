@@ -3,7 +3,6 @@ class Deck {
         this.deck = []
         this.player1 = []
         this.player2 = []
-        this.combat = []
     }
 
     newDeck () {
@@ -54,32 +53,65 @@ class Deck {
         }
     }
 
-    war () {
-        let fight1 = this.player1.pop();
-        let fight2 = this.player2.pop();
+    showFullDeck () {
+        for (let c = 0; c < this.deck.length; c++) {
+            console.log(this.deck[c])
+        }
+    }
 
-        let setCombat1 = this.combat.push(fight1);
-        let setCombat2 = this.combat.push(fight2);
+    showPlayer1 () {
+        for (let c1 = 0; c1 < this.player1.length; c1++) {
+            console.log(this.player1[c1])
+        }
+    }
+
+    showPlayer2 () {
+        for (let c2 = 0; c2 < this.player2.length; c2++) {
+            console.log(this.player2[c2])
+        }
+    }
+
+    war () {
+        let combat = [];
+        this.player1 = player1;
+        this.player2 = player2;
+
+        function fight () {
+            this.player1.pop();
+            this.combat.push(fight1);
+            this.player2.pop();
+            this.combat.push(fight2);
+        }
+
+        function setWar1 () {
+            this.player1.pop();
+            this.combat.push(fight1);
+            this.player1.pop();
+            this.combat.push(fight1);
+            this.player1.pop();
+            this.combat.push(fight1);
+        }
+
+        function setWar1 () {
+            this.player2.pop();
+            this.combat.push(fight2);
+            this.player2.pop();
+            this.combat.push(fight2);
+            this.player2.pop();
+            this.combat.push(fight2);
+        }
+
+        function fightWar () {
+            this.player1.pop();
+            this.combat.push(fight2);
+            this.player2.pop();
+            this.combat.push(fight2);
+        }
 
         function startWar () {
-            fight1;
-            setCombat1;
-            fight1;
-            setCombat1;
-            fight1;
-            setCombat1;
-
-            fight2;
-            setCombat2;
-            fight2;
-            setCombat2;
-            fight2;
-            setCombat2;
-
-            fight1;
-            setCombat2;
-            fight2;
-            setCombat2;
+            setWar1();
+            setWar2();
+            fightWar();
         }
 
         function win1 () {
@@ -130,55 +162,106 @@ class Deck {
             this.player2.unshift(combat);
         }
 
-        while (this.player1.length > 0 || this.player2.length > 0) {
-            fight1;
-            setCombat1;
-            fight2;
-            setCombat2;
+        function endWar1 () {
+            console.log("Player 1 Wins!")
+        }
 
-            if (combat[0] > combat[1]) {
+        function endWar2 () {
+            console.log("Player 2 Wins!")
+        }
+
+        while (this.player1.length > 0 && this.player2.length > 0) {
+            fight();
+
+            if (this.player1.length == 0) {
+                endWar2();
+            } else if (this.player2.length == 0) {
+                endWar1();
+            } else if (combat[0] > combat[1]) {
                 win1();
-            }
-
-            else if (combat[0] < combat[1]) {
+            } else if (combat[0] < combat[1]) {
                 win2();
-            }
-
-            else {
+            } else {
                 startWar();
                 
                 if (combat[6] > combat[7]) {
                     winWar1();
-                }
-
-                else if (combat[6] < combat[7]) {
+                } else if (combat[6] < combat[7]) {
                     winWar2();
-                }
-
-                else {
+                } else {
                     startWar();
 
-                    if(combat[])
+                    if (combat[14] > combat[15]) {
+                        winWar1();
+                        winWar1();
+                    } else if (combat[14] < combat[15]) {
+                        winWar2();
+                        winWar2();
+                    } else {
+                        startWar();
+
+                        if (combat[22] > combat[23]) {
+                            winWar1();
+                            winWar1();
+                            winWar1();
+                        } else if (combat[22] > combat[23]) {
+                            winWar2();
+                            winWar2();
+                            winWar2();
+                        } else {
+                            startWar();
+    
+                            if (combat[30] > combat[31]) {
+                                winWar1();
+                                winWar1();
+                                winWar1();
+                                winWar1();
+                            } else if (combat[30] > combat[31]) {
+                                winWar2();
+                                winWar2();
+                                winWar2();
+                                winWar2();
+                            } else {
+                                startWar();
+        
+                                if (combat[38] > combat[39]) {
+                                    winWar1();
+                                    winWar1();
+                                    winWar1();
+                                    winWar1();
+                                    winWar1();
+                                } else if (combat[38] > combat[39]) {
+                                    winWar2();
+                                    winWar2();
+                                    winWar2();
+                                    winWar2();
+                                    winWar2();
+                                } else {
+                                    startWar();
+            
+                                    if (combat[46] > combat[47]) {
+                                        winWar1();
+                                        winWar1();
+                                        winWar1();
+                                        winWar1();
+                                        winWar1();
+                                        winWar1();
+                                    } else if (combat[46] > combat[47]) {
+                                        winWar2();
+                                        winWar2();
+                                        winWar2();
+                                        winWar2();
+                                        winWar2();
+                                        winWar2();
+                                    } else {
+                                        endWar2();
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
-        }
-    }
-
-    showFullDeck () {
-        for (let c = 0; c < this.deck.length; c++) {
-            console.log(this.deck[c])
-        }
-    }
-
-    showPlayer1 () {
-        for (let c1 = 0; c1 < this.player1.length; c1++) {
-            console.log(this.player1[c1])
-        }
-    }
-
-    showPlayer2 () {
-        for (let c2 = 0; c2 < this.player2.length; c2++) {
-            console.log(this.player2[c2])
         }
     }
 }
