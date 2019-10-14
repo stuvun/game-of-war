@@ -86,23 +86,42 @@ class Deck {
             this.player1Wins();
         }
     }
-
+    win1 () {
+        this.currentCard = this.combat.pop();
+        if (this.player2.length > 0) {
+            this.player1.unshift(this.currentCard);
+        } else {
+            this.player1Wins();
+        }
+        this.currentCard = this.combat.pop();
+        if (this.player2.length > 0) {
+            this.player1.unshift(this.currentCard);
+        } else {
+            this.player1Wins();
+        }
+    }
     setWar1 () {
-        this.currentCard = this.player1.pop();
-        this.combat.push(this.currentCard);
-        this.currentCard = this.player1.pop();
-        this.combat.push(this.currentCard);
-        this.currentCard = this.player1.pop();
-        this.combat.push(this.currentCard);
+        for (let i = 0; i < 3; i++) {
+            if (this.player1.length > 0) {
+                this.currentCard = this.player1.pop();
+                this.combat.push(this.currentCard);
+            } else {
+                this.player2Wins();
+                break;
+            }
+        }
     }
 
     setWar2 () {
-        this.currentCard = this.player2.pop();
-        this.combat.push(this.currentCard);
-        this.currentCard = this.player2.pop();
-        this.combat.push(this.currentCard);
-        this.currentCard = this.player2.pop();
-        this.combat.push(this.currentCard);
+        for (let i = 0; i < 3; i++) {
+            if (this.player2.length > 0) {
+                this.currentCard = this.player2.pop();
+                this.combat.push(this.currentCard);
+            } else {
+                this.player1Wins();
+                break;
+            }
+        }
     }
 
     startWar () {
@@ -166,7 +185,6 @@ class Deck {
                 console.log("combat[6].value", this.combat[6].value)
                 console.log("combat[7].value", this.combat[7].value)
                 if (this.combat[6].value > this.combat[7].value) {
-                    console.log("Player 1 wins the war")
                     this.winWar1();
                 } else if (this.combat[6].value < this.combat[7].value) {
                     this.winWar2();
@@ -174,7 +192,6 @@ class Deck {
                     this.startWar();
 
                     if (this.combat[14].value > this.combat[15].value) {
-                        console.log("same card 2")
                         this.winWar1();
                         this.winWar1();
                     } else if (this.combat[14].value < this.combat[15].value) {
@@ -184,7 +201,6 @@ class Deck {
                         this.startWar();
 
                         if (this.combat[22].value > this.combat[23].value) {
-                            console.log("same card 3")
                             this.winWar1();
                             this.winWar1();
                             this.winWar1();
@@ -196,7 +212,6 @@ class Deck {
                             this.startWar();
     
                             if (this.combat[30].value > this.combat[31].value) {
-                                console.log("same card 4")
                                 this.winWar1();
                                 this.winWar1();
                                 this.winWar1();
@@ -210,7 +225,6 @@ class Deck {
                                 this.startWar();
         
                                 if (this.combat[38].value > this.combat[39].value) {
-                                    console.log("same card 5")
                                     this.winWar1();
                                     this.winWar1();
                                     this.winWar1();
@@ -226,7 +240,6 @@ class Deck {
                                     this.startWar();
             
                                     if (this.combat[46].value > this.combat[47].value) {
-                                        console.log("same card 6")
                                         this.winWar1();
                                         this.winWar1();
                                         this.winWar1();
