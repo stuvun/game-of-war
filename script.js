@@ -287,11 +287,3 @@ class Deck {
 deck = new Deck
 
 deck.newDeck()
-
-shuffle = deck.shuffleDeck()
-
-player1 = deck.showPlayer1()
-
-player2 = deck.showPlayer2()
-
-war = deck.war()
