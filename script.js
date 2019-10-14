@@ -174,103 +174,198 @@ class Deck {
         while (this.player1.length > 0 && this.player2.length > 0) {
             this.fight();
 
+            console.log("Player 1's Card", this.combat[0].value)
+            console.log("Player 2's Card", this.combat[1].value)
+            
             if (this.combat[0].value > this.combat[1].value) {
                 console.log("Player 1 wins the battle!")
+
                 this.win1();
+
+                console.log("Player 1's Deck: " + this.player1.length);
+                console.log("Player 2's Deck: " + this.player2.length);
+
             } else if (this.combat[0].value < this.combat[1].value) {
                 console.log("Player 2 wins the battle!")
+
                 this.win2();
+
+                console.log("Player 1's Deck: " + this.player1.length);
+                console.log("Player 2's Deck: " + this.player2.length);
+
             } else {
                 console.log("Initiate war!!");
+
                 this.startWar();
-                /*console.log("combat[6].value", this.combat[6].value)
-                console.log("combat[7].value", this.combat[7].value)*/
+
+                console.log("Player 1's Card", this.combat[6].value)
+                console.log("Player 2's Card", this.combat[7].value)
+
                 if (this.combat[6].value > this.combat[7].value) {
                     console.log("Player 1 wins the war!");
+
                     this.winWar1();
+
+                    console.log("Player 1's Deck: " + this.player1.length);
+                    console.log("Player 2's Deck: " + this.player2.length);
+
                 } else if (this.combat[6].value < this.combat[7].value) {
                     console.log("Player 2 wins the war!");
+
                     this.winWar2();
+
+                    console.log("Player 1's Deck: " + this.player1.length);
+                    console.log("Player 2's Deck: " + this.player2.length);
+
                 } else {
                     console.log("Initiate war!! AGAIN!");
+
                     this.startWar();
+
+                    console.log("Player 1's Card", this.combat[14].value)
+                    console.log("Player 2's Card", this.combat[15].value)
 
                     if (this.combat[14].value > this.combat[15].value) {
                         console.log("Player 1 wins the war!");
+
                         this.winWar1();
                         this.winWar1();
+
+                        console.log("Player 1's Deck: " + this.player1.length);
+                        console.log("Player 2's Deck: " + this.player2.length);
+
                     } else if (this.combat[14].value < this.combat[15].value) {
                         console.log("Player 2 wins the war!");
+
                         this.winWar2();
                         this.winWar2();
+
+                        console.log("Player 1's Deck: " + this.player1.length);
+                        console.log("Player 2's Deck: " + this.player2.length);
+
                     } else {
                         console.log("Initiate war!! AGAIN!");
+
                         this.startWar();
+
+                        console.log("Player 1's Card", this.combat[22].value)
+                        console.log("Player 2's Card", this.combat[23].value)
 
                         if (this.combat[22].value > this.combat[23].value) {
                             console.log("Player 1 wins the war!");
+
                             this.winWar1();
                             this.winWar1();
                             this.winWar1();
+
+                            console.log("Player 1's Deck: " + this.player1.length);
+                            console.log("Player 2's Deck: " + this.player2.length);
+
                         } else if (this.combat[22].value > this.combat[23].value) {
                             console.log("Player 2 wins the war!");
+
                             this.winWar2();
                             this.winWar2();
                             this.winWar2();
+
+                            console.log("Player 1's Deck: " + this.player1.length);
+                            console.log("Player 2's Deck: " + this.player2.length);
+
                         } else {
                             console.log("Initiate war!! AGAIN!");
+
                             this.startWar();
-    
+
+                            console.log("Player 1's Card", this.combat[30].value)
+                            console.log("Player 2's Card", this.combat[31].value)
+
                             if (this.combat[30].value > this.combat[31].value) {
                                 console.log("Player 1 wins the war!");
+
                                 this.winWar1();
                                 this.winWar1();
                                 this.winWar1();
                                 this.winWar1();
+
+                                console.log("Player 1's Deck: " + this.player1.length);
+                                console.log("Player 2's Deck: " + this.player2.length);
+
                             } else if (this.combat[30].value > this.combat[31].value) {
                                 console.log("Player 2 wins the war!");
+
                                 this.winWar2();
                                 this.winWar2();
                                 this.winWar2();
                                 this.winWar2();
+
+                                console.log("Player 1's Deck: " + this.player1.length);
+                                console.log("Player 2's Deck: " + this.player2.length);
+
                             } else {
                                 console.log("Initiate war!! AGAIN!");
+
                                 this.startWar();
-        
+
+                                console.log("Player 1's Card", this.combat[38].value)
+                                console.log("Player 2's Card", this.combat[39].value)
+
                                 if (this.combat[38].value > this.combat[39].value) {
                                     console.log("Player 1 wins the war!");
+
                                     this.winWar1();
                                     this.winWar1();
                                     this.winWar1();
                                     this.winWar1();
                                     this.winWar1();
+
+                                    console.log("Player 1's Deck: " + this.player1.length);
+                                    console.log("Player 2's Deck: " + this.player2.length);
+
                                 } else if (this.combat[38].value > this.combat[39].value) {
+
                                     console.log("Player 2 wins the war!");
                                     this.winWar2();
                                     this.winWar2();
                                     this.winWar2();
                                     this.winWar2();
                                     this.winWar2();
+                                    console.log("Player 1's Deck: " + this.player1.length);
+                                    console.log("Player 2's Deck: " + this.player2.length);
+                                
                                 } else {
                                     console.log("Initiate war!! AGAIN!");
+
                                     this.startWar();
-            
+
+                                    console.log("Player 1's Card", this.combat[46].value)
+                                    console.log("Player 2's Card", this.combat[47].value)
+
                                     if (this.combat[46].value > this.combat[47].value) {
                                         console.log("Player 1 wins the war!");
+
                                         this.winWar1();
                                         this.winWar1();
                                         this.winWar1();
                                         this.winWar1();
                                         this.winWar1();
                                         this.winWar1();
+
+                                        console.log("Player 1's Deck: " + this.player1.length);
+                                        console.log("Player 2's Deck: " + this.player2.length);
+                                    
                                     } else if (this.combat[46].value > this.combat[47].value) {
                                         console.log("Player 2 wins the war!");
+
                                         this.winWar2();
                                         this.winWar2();
                                         this.winWar2();
                                         this.winWar2();
                                         this.winWar2();
                                         this.winWar2();
+
+                                        console.log("Player 1's Deck: " + this.player1.length);
+                                        console.log("Player 2's Deck: " + this.player2.length);
+                                    
                                     } else {
                                         this.player2Wins();
                                     }
