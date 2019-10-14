@@ -287,3 +287,5 @@ class Deck {
 deck = new Deck
 
 deck.newDeck()
+
+deck.war()
