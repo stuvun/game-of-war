@@ -72,10 +72,19 @@ class Deck {
     }
 
     fight () {
-        this.currentCard = this.player1.pop();
-        this.combat.push(this.currentCard);
-        this.currentCard = this.player2.pop();
-        this.combat.push(this.currentCard);
+        if (this.player1.length > 0) {
+            this.currentCard = this.player1.pop();
+            this.combat.push(this.currentCard);
+        } else {
+            this.player2Wins();
+        }
+
+        if (this.player2.length > 0) {
+            this.currentCard = this.player2.pop();
+            this.combat.push(this.currentCard);
+        } else {
+            this.player1Wins();
+        }
     }
 
     setWar1 () {
@@ -130,16 +139,15 @@ class Deck {
         this.win2();
     }
 
-    endWar1 () {
-        console.log("Player 1 Wins!")
+    player1Wins () {
+        console.log("Player 1 wins the game!")
     }
 
-    endWar2 () {
-        console.log("Player 2 Wins!")
+    player2Wins () {
+        console.log("Player 2 wins the game!")
     }
 
     war () {
-        let combat = [];
         this.shuffleDeck();
         this.dealPlayer1();
         this.dealPlayer2();
@@ -147,50 +155,53 @@ class Deck {
         while (this.player1.length > 0 && this.player2.length > 0) {
             this.fight();
 
-            if (this.player1.length == 0) {
-                this.endWar2();
-            } else if (this.player2.length == 0) {
-                this.endWar1();
-            } else if (combat[0].value > combat[1].value) {
+            if (this.combat[0].value > this.combat[1].value) {
+                console.log("Player 1 wins the battle!")
                 this.win1();
-            } else if (combat[0].value < combat[1].value) {
+            } else if (this.combat[0].value < this.combat[1].value) {
+                console.log("Player 2 wins the battle!")
                 this.win2();
             } else {
                 this.startWar();
-                
-                if (combat[6].value > combat[7].value) {
+                console.log("combat[6].value", this.combat[6].value)
+                console.log("combat[7].value", this.combat[7].value)
+                if (this.combat[6].value > this.combat[7].value) {
+                    console.log("Player 1 wins the war")
                     this.winWar1();
-                } else if (combat[6].value < combat[7].value) {
+                } else if (this.combat[6].value < this.combat[7].value) {
                     this.winWar2();
                 } else {
                     this.startWar();
 
-                    if (combat[14].value > combat[15].value) {
+                    if (this.combat[14].value > this.combat[15].value) {
+                        console.log("same card 2")
                         this.winWar1();
                         this.winWar1();
-                    } else if (combat[14].value < combat[15].value) {
+                    } else if (this.combat[14].value < this.combat[15].value) {
                         this.winWar2();
                         this.winWar2();
                     } else {
                         this.startWar();
 
-                        if (combat[22].value > combat[23].value) {
+                        if (this.combat[22].value > this.combat[23].value) {
+                            console.log("same card 3")
                             this.winWar1();
                             this.winWar1();
                             this.winWar1();
-                        } else if (combat[22].value > combat[23].value) {
+                        } else if (this.combat[22].value > this.combat[23].value) {
                             this.winWar2();
                             this.winWar2();
                             this.winWar2();
                         } else {
                             this.startWar();
     
-                            if (combat[30].value > combat[31].value) {
+                            if (this.combat[30].value > this.combat[31].value) {
+                                console.log("same card 4")
                                 this.winWar1();
                                 this.winWar1();
                                 this.winWar1();
                                 this.winWar1();
-                            } else if (combat[30].value > combat[31].value) {
+                            } else if (this.combat[30].value > this.combat[31].value) {
                                 this.winWar2();
                                 this.winWar2();
                                 this.winWar2();
@@ -198,13 +209,14 @@ class Deck {
                             } else {
                                 this.startWar();
         
-                                if (combat[38].value > combat[39].value) {
+                                if (this.combat[38].value > this.combat[39].value) {
+                                    console.log("same card 5")
                                     this.winWar1();
                                     this.winWar1();
                                     this.winWar1();
                                     this.winWar1();
                                     this.winWar1();
-                                } else if (combat[38].value > combat[39].value) {
+                                } else if (this.combat[38].value > this.combat[39].value) {
                                     this.winWar2();
                                     this.winWar2();
                                     this.winWar2();
@@ -213,14 +225,15 @@ class Deck {
                                 } else {
                                     this.startWar();
             
-                                    if (combat[46].value > combat[47].value) {
+                                    if (this.combat[46].value > this.combat[47].value) {
+                                        console.log("same card 6")
                                         this.winWar1();
                                         this.winWar1();
                                         this.winWar1();
                                         this.winWar1();
                                         this.winWar1();
                                         this.winWar1();
-                                    } else if (combat[46].value > combat[47].value) {
+                                    } else if (this.combat[46].value > this.combat[47].value) {
                                         this.winWar2();
                                         this.winWar2();
                                         this.winWar2();
@@ -228,7 +241,7 @@ class Deck {
                                         this.winWar2();
                                         this.winWar2();
                                     } else {
-                                        this.endWar2();
+                                        this.player2Wins();
                                     }
                                 }
                             }
