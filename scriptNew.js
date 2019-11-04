@@ -4,10 +4,9 @@ class Deck {
         this.player1 = []
         this.player2 = []
         this.combat = []
-        this.currentCard = ""
+        this.round = 1
     }
-
-    newDeck () {
+    newDeck() {
         let card = (suit, face, value) => {
             this.suit = suit
             this.face = face
@@ -15,15 +14,13 @@ class Deck {
             return {suit: this.suit, face: this.face, value: this.value}
         }
         let suits = ["Spades", "Hearts", "Clubs", "Diamonds"];
-        let faces = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+        let faces = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"];
         for (let s = 0; s < suits.length; s++) {
             for (let f = 0; f < faces.length; f++) {
                 let values = f;
                 this.deck.push(card(suits[s], faces[f], values));
             }
         }
-    }
-    shuffleDeck () {
         let index = this.deck.length, tempIndex, newIndex;
         while (index > 0) {
             newIndex = Math.floor(Math.random() * index);
@@ -32,62 +29,58 @@ class Deck {
             this.deck[index] = this.deck[newIndex];
             this.deck[newIndex] = tempIndex;
         }
-    }
-    dealPlayer1 () { while (this.deck.length > 26) {
-        let deal1 = this.deck.shift();
-        this.player1.push(deal1); }
-    }
-    dealPlayer2 () { while (this.deck.length > 0) {
-        let deal2 = this.deck.shift();
-        this.player2.push(deal2); }
-    }
-    showFullDeck () { for (let c = 0; c < this.deck.length; c++) {
-        console.log(this.deck[c]) }
-    }
-    showPlayer1 () { for (let c1 = 0; c1 < this.player1.length; c1++) {
-        console.log(this.player1[c1]) }
-    }
-    showPlayer2 () { for (let c2 = 0; c2 < this.player2.length; c2++) {
-        console.log(this.player2[c2]) }
-    }
-    prepareWar() {
-        this.newDeck();
-        this.shuffleDeck();
-        this.dealPlayer1();
-        this.dealPlayer2();
-        this.showFullDeck();
-        this.showPlayer1();
-        this.showPlayer2();
-    }
-
-    turns() {
-        this.combat.push(this.player1.pop())
-        this.combat.push(this.player2.pop())
-    }
-    announceCombat() {
-        console.log("Player 1's Card: " + JSON.stringify(this.combat[0]))
-        console.log("Player 2's Card: " + JSON.stringify(this.combat[1]))
-    }
-    announceDecks() {
-        console.log("Player 1's Deck: " + this.player1.length)
-        console.log("Player 2's Deck: " + this.player2.length)
-    }
-    endTurn() {
-        this.announceCombat();
-        if (this.combat[0].value > this.combat[1].value) {
-            console.log("Player 1 wins this turn!")
-            for (let i = 0; i <= this.combat.length; i++) {
-                this.player1.unshift(this.combat.pop())
-            }
-            this.announceDecks();
-        } else if (this.combat[0].value < this.combat[1].value) {
-            console.log("Player 2 wins this turn!")
-            for (let i = 0; i <= this.combat.length; i++) {
-                this.player2.unshift(this.combat.pop())
-            }
-            this.announceDecks();
+        while (this.deck.length > 26) {
+            let deal1 = this.deck.shift();
+            this.player1.push(deal1);
         }
+        while (this.deck.length > 0) {
+            let deal2 = this.deck.shift();
+            this.player2.push(deal2);
+        }
+        this.deckCheck();
+    }
+    grabCards1() {
+        if (this.combat.length > 0) {
+            console.log("Player 1 wins this war!")
+            while (this.combat.length > 0) { this.player1.push(this.combat.shift()) } }
+    }
+    grabCards2() {
+        if (this.combat.length > 0) {
+            console.log("Player 2 wins this war!")
+            while (this.combat.length > 0) {  this.player2.push(this.combat.shift()) } }
+    }
+    deckCheck() {
+        console.log("Player 1's Deck: " + this.player1.length); console.log("Player 2's Deck: " + this.player2.length)
+    }
+    checkWin() {
+        if (this.player2.length == 0) { console.log("Player 1 wins!"); this.grabCards1(); this.deckCheck() }
+        else if (this.player1.length == 0) { console.log("Player 2 wins!"); this.grabCards2(); this.deckCheck() }
+        else { this.round = this.round + 1; this.deckCheck(); this.startGame() }
+    }
+    prepTurn() {
+        console.log("ROUND: " + this.round)
+        if (this.player1.length > 0 && this.player2.length > 0) {
+            console.log("Player 1's Card: " + this.player1[0].face + " of " + this.player1[0].suit + " || Power: " + this.player1[0].value)
+            console.log("Player 2's Card: " + this.player2[0].face + " of " + this.player2[0].suit + " || Power: " + this.player2[0].value)
+            if (this.player1[0].value > this.player2[0].value) { console.log("Player 1 wins this turn!")
+                this.player1.push(this.player2.shift()); this.grabCards1(); this.checkWin()
+            }
+            else if (this.player1[0].value < this.player2[0].value) { console.log("Player 2 wins this turn!")
+                this.player2.push(this.player1.shift()); this.grabCards2(); this.checkWin()
+            }
+            else if (this.player1[0].value === this.player2[0].value) { this.prepWar() }
+        } else { this.checkWin() }
+    }
+    prepWar() {
+        console.log("Prepare for war!")
+        for (let i = 0; i < 3; i++) { this.combat.unshift(this.player1.shift()); this.combat.unshift(this.player2.shift()) }
+        this.prepTurn()
+    }
+    startGame() { if (this.player1.length > 0 && this.player2.length > 0) {
+                    this.prepTurn() }
+                  else { this.checkWin() }
     }
 }
 deck = new Deck;
-deck.prepareWar();
+deck.newDeck();
+deck.startGame();
