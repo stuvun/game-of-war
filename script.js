@@ -12,7 +12,9 @@ class Deck {
             this.face = face
             this.value = value
             return {
-                suit: this.suit, face: this.face, value: this.value
+                suit: this.suit,
+                face: this.face,
+                value: this.value
             }
         }
         let suits = ["Spades", "Hearts", "Clubs", "Diamonds"];
@@ -29,21 +31,21 @@ class Deck {
             index -= 1;
             tempIndex = this.deck[index];
             this.deck[index] = this.deck[newIndex];
-            this.deck[newIndex] = tempIndex;
+            this.deck[newIndex] = tempIndex
         }
         while (this.deck.length > 26) {
             let deal1 = this.deck.shift();
-            this.player1.push(deal1);
+            this.player1.push(deal1)
         }
         while (this.deck.length > 0) {
             let deal2 = this.deck.shift();
-            this.player2.push(deal2);
+            this.player2.push(deal2)
         }
-        this.deckCheck();
+        this.deckCheck()
     }
     grabCards1() {
         if (this.combat.length > 0) {
-            console.log("Player 1 wins this war!")
+            console.log("Player 1 wins this war!");
             while (this.combat.length > 0) {
                 this.player1.push(this.combat.shift())
             }
@@ -51,7 +53,7 @@ class Deck {
     }
     grabCards2() {
         if (this.combat.length > 0) {
-            console.log("Player 2 wins this war!")
+            console.log("Player 2 wins this war!");
             while (this.combat.length > 0) { 
                 this.player2.push(this.combat.shift())
             }
@@ -103,7 +105,7 @@ class Deck {
         }
     }
     prepWar() {
-        console.log("Prepare for war!")
+        console.log("Prepare for war!");
         for (let i = 0; i < 3; i++) {
             this.combat.unshift(this.player1.shift());
             this.combat.unshift(this.player2.shift())
@@ -113,7 +115,7 @@ class Deck {
     startGame() {
         if (this.player1.length > 0 && this.player2.length > 0) {
             this.prepTurn()
-    }
+        }
         else {
             this.checkWin()
         }
