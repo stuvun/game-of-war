@@ -11,7 +11,9 @@ class Deck {
             this.suit = suit
             this.face = face
             this.value = value
-            return { suit: this.suit, face: this.face, value: this.value }
+            return {
+                suit: this.suit, face: this.face, value: this.value
+            }
         }
         let suits = ["Spades", "Hearts", "Clubs", "Diamonds"];
         let faces = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"];
@@ -93,7 +95,9 @@ class Deck {
                 this.grabCards2();
                 this.checkWin()
             }
-            else if (this.player1[0].value === this.player2[0].value) { this.prepWar() }
+            else if (this.player1[0].value === this.player2[0].value) {
+                this.prepWar()
+            }
         } else {
             this.checkWin()
         }
@@ -106,7 +110,10 @@ class Deck {
         }
         this.prepTurn()
     }
-    startGame() { if (this.player1.length > 0 && this.player2.length > 0) { this.prepTurn() }
+    startGame() {
+        if (this.player1.length > 0 && this.player2.length > 0) {
+            this.prepTurn()
+    }
         else {
             this.checkWin()
         }
