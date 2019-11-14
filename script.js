@@ -76,9 +76,8 @@ class Deck {
         for (let i = 0; i < 3; i++) { this.combat.unshift(this.player1.shift()); this.combat.unshift(this.player2.shift()) }
         this.prepTurn()
     }
-    startGame() { if (this.player1.length > 0 && this.player2.length > 0) {
-                    this.prepTurn() }
-                  else { this.checkWin() }
+    startGame() { if (this.player1.length > 0 && this.player2.length > 0) { this.prepTurn() }
+        else { this.checkWin() }
     }
 }
 deck = new Deck;
