@@ -6,6 +6,7 @@ class Deck {
         this.combat = []
         this.round = 1
     }
+
     newDeck() {
         let card = (suit, face, value) => {
             this.suit = suit
@@ -25,7 +26,10 @@ class Deck {
                 this.deck.push(card(suits[s], faces[f], values))
             }
         }
-        let index = this.deck.length, tempIndex, newIndex;
+        let index =
+            this.deck.length,
+            tempIndex,
+            newIndex;
         while (index > 0) {
             newIndex = Math.floor(Math.random() * index);
             index -= 1;
@@ -43,6 +47,7 @@ class Deck {
         }
         this.deckCheck()
     }
+
     grabCards1() {
         if (this.combat.length > 0) {
             console.log("Player 1 wins this war!");
@@ -51,6 +56,7 @@ class Deck {
             }
         }
     }
+
     grabCards2() {
         if (this.combat.length > 0) {
             console.log("Player 2 wins this war!");
@@ -59,10 +65,12 @@ class Deck {
             }
         }
     }
+
     deckCheck() {
         console.log("Player 1's Deck: " + this.player1.length);
         console.log("Player 2's Deck: " + this.player2.length)
     }
+
     checkWin() {
         if (this.player2.length == 0) {
             console.log("Player 1 wins!");
@@ -80,6 +88,7 @@ class Deck {
             this.startGame()
         }
     }
+
     prepTurn() {
         console.log("ROUND: " + this.round)
         if (this.player1.length > 0 && this.player2.length > 0) {
@@ -100,10 +109,12 @@ class Deck {
             else if (this.player1[0].value === this.player2[0].value) {
                 this.prepWar()
             }
-        } else {
+        }
+        else {
             this.checkWin()
         }
     }
+
     prepWar() {
         console.log("Prepare for war!");
         for (let i = 0; i < 3; i++) {
@@ -112,6 +123,7 @@ class Deck {
         }
         this.prepTurn()
     }
+
     startGame() {
         if (this.player1.length > 0 && this.player2.length > 0) {
             this.prepTurn()
